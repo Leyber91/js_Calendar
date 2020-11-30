@@ -9,11 +9,11 @@ function createMonth(days){
 }
 function createYear(year){
     const days=[31,year%4==0?29:28,31,30,31,30,31,31,30,31,30,31];
-    var year=[];
+    var y=[];
     days.forEach(numberDays => {
-        year.push(createMonth(numberDays));
+        y.push(createMonth(numberDays));
     });
-    return year;
+    return y;
 }
 function createCalendar(firstYear, numberOfYears){
     let cal={};
@@ -33,4 +33,47 @@ function getCalendar(){
         calendarJson=JSON.stringify(calendar);
         localStorage.setItem('calendar', calendarJson);
     }
+}
+
+function saveCalendar(){
+    calendarJson=JSON.stringify(calendar);
+    localStorage.setItem('calendar', calendarJson);
+}
+
+function createNewEvent(title, initialDate, finalDate, reminder, description, type ){
+    let event={
+        'title': title,
+        'initialDate': initialDate,
+        'endDate': finalDate,
+        'reminder': reminder,
+        'description': description,
+        'type': type,
+    }
+    if(finalDate){
+        let isSameDay= initialDate.getFullYear()==finalDate.getFullYear() && initialDate.getMonth()== finalDate.getMonth() && initialDate.getDate() == finalDate.getDate();
+        if(isSameDay){
+            setEvent(event, initialDate);
+        }else{
+            let daysDiference= Math.floor(finalDate.getTime()/(1000*60*60*24))-Math.floor(initialDate.getTime()/(1000*60*60*24));
+            for(let i=0; i<=daysDiference; i++){
+                let d=new Date(initialDate.getTime());
+                d.setDate(d.getDate()+i);
+                setEvent(event, d);
+            }
+        }
+    }else{
+        setEvent(event, initialDate);
+    }
+}
+
+function setEvent(eventObject, day){
+    console.log(day);
+        calendar[day.getFullYear()][day.getMonth()][day.getDate()].push(eventObject);
+        saveCalendar();
+}
+
+function p1(){
+    var initialDate = new Date(2020, 10, 17, 3, 24, 0);
+    var finalDate=new Date(2020, 10, 18, 3, 24, 0);
+    createNewEvent('Dentist', initialDate, finalDate, null, null, null );
 }
