@@ -1,5 +1,7 @@
 let calendar={};
+let reminders=[];
 getCalendar();
+getReminders();
 
 function createMonth(days){
     var month=[];
@@ -69,15 +71,22 @@ function createNewEvent(title, initialDate, finalDate, reminder, description, ty
 
 function setEvent(eventObject, day){
     console.log(day);
-        calendar[day.getFullYear()][day.getMonth()][day.getDate()].push(eventObject);
-        saveCalendar();
+    calendar[day.getFullYear()][day.getMonth()][day.getDate()-1].push(eventObject);
+    saveCalendar();
+    if(eventObject.reminder){
+        addReminder(eventObject);
+    }
 }
 
 function deleteEvent(element, day){
-    const d=calendar[day.getFullYear()][day.getMonth()][day.getDate()]
+    console.log(day);
+    const d=calendar[day.getFullYear()][day.getMonth()][day.getDate()-1]
     const index=d.indexOf(element);
     d.splice(index, 1);
     saveCalendar();
+    if(element.reminder){
+        deleteReminder(element)
+   }
 }
 
 function deleteEventFromCalendar(element){
@@ -112,3 +121,63 @@ function daysDiference(initialDate, finalDate){
 }
 
 
+
+/*-----------------Reminders------------*/
+
+function getReminders(){
+    remindersJson='';
+    if(localStorage.getItem('reminders')){
+        remindersJson=localStorage.getItem('reminders');
+        reminders=JSON.parse(remindersJson);
+    }
+    else{
+        reminders=[];
+        remindersJson=JSON.stringify(reminders);
+        localStorage.setItem('reminders', remindersJson);
+    }
+}
+
+function saveReminders(){
+    remindersJson=JSON.stringify(reminders);
+    localStorage.setItem('reminders', remindersJson);
+}
+
+function addReminder(element){
+    reminders.push(element);
+    reminders.sort((a,b)=>a.initialDate.getTime()-b.initialDate.getTime());
+    saveReminders();
+}
+
+function deleteReminder(reminder){
+    console.log(reminder);
+    const index=reminders.indexOf(reminder);
+    reminders.splice(index, 1);
+}
+
+/*function f1(){
+    for(let i=3; i>0; i--){
+        let e={
+            'title': 'dia '+i,
+            'initialDate': new Date('December'+i+', 2020 03:24:00'),
+            'endDate': null,
+            'reminder': 10,
+            'description': null,
+            'type': null,
+        }
+        createNewEvent('dia '+i, new Date('December'+i+', 2020 03:24:00'), null, 10, null, null);
+    }
+}
+
+function f2(){
+    for(let i=3; i>0; i--){
+        let e={
+            'title': 'dia '+i,
+            'initialDate': new Date('December'+i+', 2020 03:24:00'),
+            'endDate': null,
+            'reminder': 10,
+            'description': null,
+            'type': null,
+        }
+        deleteEventFromCalendar(e);
+    }
+}*/
