@@ -13,6 +13,7 @@ main {
 #headerTitle {
     flex-basis: 20%;
     align-content: space-between;
+    text-align: center;
 }
 /* MAIN MONTH SECTION */
 #monthDisplay {
@@ -31,8 +32,7 @@ main {
         display: flex;
         align-items: space-evenly;
         text-align: center;
-
-
+        
     }
         .weekDayWords{
             flex-basis: 13%;
