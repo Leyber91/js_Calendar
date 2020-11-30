@@ -26,18 +26,34 @@ main {
         text-align: center;
     }
 
-    #weekDayWords {
+    #weekDayWordsLine {
         flex-basis: 10%;
-        justify-content: space-evenly;
-    }
-
-    #MainCalendarFlex {
-        flex-basis: 85%;
-        justify-content: space-evenly;
-        align-content: space-evenly;
+        display: flex;
         align-items: space-evenly;
+        text-align: center;
+
+
+    }
+        .weekDayWords{
+            flex-basis: 13%;
+            border: 0.2em solid #ffffff;
+            min-height: 2em;
+            min-width: 3em;
+            position: relative;
+        }
+
+    #mainCalendarFlexBox {
+        flex-basis: 85%;
+        display: flex;
         flex-wrap: wrap;
     }
+        .divCalendarItem {
+            flex-basis: 13%;
+            border: 0.2em solid #000000;
+            min-height: 2em;
+            min-width: 3em;
+            position: relative;
+        }
         
 
 
