@@ -1,4 +1,5 @@
 let calendar={};
+getCalendar();
 
 function createMonth(days){
     var month=[];
@@ -54,8 +55,8 @@ function createNewEvent(title, initialDate, finalDate, reminder, description, ty
         if(isSameDay){
             setEvent(event, initialDate);
         }else{
-            let daysDiference= Math.floor(finalDate.getTime()/(1000*60*60*24))-Math.floor(initialDate.getTime()/(1000*60*60*24));
-            for(let i=0; i<=daysDiference; i++){
+            let diference= daysDiference(initialDate, finalDate);
+            for(let i=0; i<=diference; i++){
                 let d=new Date(initialDate.getTime());
                 d.setDate(d.getDate()+i);
                 setEvent(event, d);
@@ -72,8 +73,42 @@ function setEvent(eventObject, day){
         saveCalendar();
 }
 
-function p1(){
-    var initialDate = new Date(2020, 10, 17, 3, 24, 0);
-    var finalDate=new Date(2020, 10, 18, 3, 24, 0);
-    createNewEvent('Dentist', initialDate, finalDate, null, null, null );
+function deleteEvent(element, day){
+    const d=calendar[day.getFullYear()][day.getMonth()][day.getDate()]
+    const index=d.indexOf(element);
+    d.splice(index, 1);
+    saveCalendar();
 }
+
+function deleteEventFromCalendar(element){
+    if(element.endDate){
+        let isSameDay= areSameDate(element.initialDate, element.endDate);
+        if(isSameDay){
+            deleteEvent(element, element.initialDate);
+        }else{
+            let diference= daysDiference(element.initialDate, element.endDate)
+            console.log(diference);
+            for(let i=0; i<=diference; i++){
+                let d=new Date(element.initialDate.getTime());
+                d.setDate(d.getDate()+i);
+                console.log(d);
+                deleteEvent(element, d);
+            }
+        }
+    }else{
+        deleteEvent(element, element.initialDate);
+    }
+}
+
+function areSameDate(initialDate, finalDate){
+    return initialDate.getFullYear()==finalDate.getFullYear() && initialDate.getMonth()== finalDate.getMonth() && initialDate.getDate() == finalDate.getDate();
+}
+
+function daysDiference(initialDate, finalDate){
+    let initialDays=Math.floor(initialDate.getTime()/(1000*60*60*24))
+    let finalDays=Math.floor(finalDate.getTime()/(1000*60*60*24))
+    let daysDiference= finalDays-initialDays;
+    return daysDiference;
+}
+
+
