@@ -1,0 +1,62 @@
+/*USE IT FOR THE COLORS*/
+
+:root {
+
+}
+
+/* BEGINNING FLEX STRUCTURE */
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+#headerTitle {
+    flex-basis: 20%;
+    align-content: space-between;
+    text-align: center;
+}
+/* MAIN MONTH SECTION */
+#monthDisplay {
+    flex-basis: 80%;
+    margin: 2em 1em;
+    flex-direction: column;
+}
+
+    #currentDay {
+        flex-basis: 5%;
+        text-align: center;
+    }
+
+    #weekDayWordsLine {
+        flex-basis: 10%;
+        display: flex;
+        align-items: space-evenly;
+        text-align: center;
+        
+    }
+        .weekDayWords{
+            flex-basis: 13%;
+            border: 0.2em solid #ffffff;
+            min-height: 2em;
+            min-width: 3em;
+            position: relative;
+        }
+
+    #mainCalendarFlexBox {
+        flex-basis: 85%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+        .divCalendarItem {
+            flex-basis: 13%;
+            border: 0.2em solid #000000;
+            min-height: 2em;
+            min-width: 3em;
+            position: relative;
+        }
+
+    
+        
+
+
+
