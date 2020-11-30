@@ -39,7 +39,7 @@ let startingWeekDay = startOfMonth(d);
 let d1 = startingWeekDay.getDay();
 console.log(d1);
 // prepend function in order to add empty cells before the beginning of a month
-let addingEmptyDivs = function(){
+let addingEmptyDivsBefore = function(){
     if (d1 === 0){
         for (let i = 6; i > 0; i-- ){
             let divNode = document.createElement("div"); // create de DIV
@@ -57,5 +57,52 @@ let addingEmptyDivs = function(){
         }
 }
 // we execute the function
-addingEmptyDivs();
+addingEmptyDivsBefore();
+
+//A
+//let addingEmptyDivsAfter = function(){
+    // 36(NUMBER OF DIVS)%7 === 1
+    // let remanent = 36%7
+    // let divsToAppend =  7-remanent
+    // 
+
+let parentCalendarChildren = document.getElementById("mainCalendarFlexBox").childElementCount;
+console.log(parentCalendarChildren) // we use this one to get the number of elements
+let addingEmptyDivAfter = function(){
+    let numOfDivToAdd = 7 - (parentCalendarChildren%7);
+    console.log(numOfDivToAdd);
+    let z = numOfDivToAdd;
+
+    while (z > 0) {
+        let divNode = document.createElement("div"); // create de DIV
+        divNode.classList.add("divCalendarItem")
+        // we generate empty object
+        mainCalendar.append(divNode); // append at beginning
+        z--;
+      }
+}
+
+addingEmptyDivAfter();
+
+
+
+/*
+    if (d1 === 0){
+        for (let i = 6; i > 0; i-- ){
+            let divNode = document.createElement("div"); // create de DIV
+            divNode.classList.add("divCalendarItem")
+            // we generate an empty object
+            mainCalendar.append(divNode); // append at beginning
+            console.log(i);
+        }} else {
+            for (let i = d1-1 ; i > 0 ; i--){
+                let divNode = document.createElement("div"); // create de DIV
+                divNode.classList.add("divCalendarItem")
+                // we generate empty object
+                mainCalendar.append(divNode); // append at beginning
+            }
+        }
+}*/
+// we execute the function
+//addingEmptyDivsBefore();
 
