@@ -11,7 +11,7 @@ let getDaysInMonth = function(month,year) {
 let monthDuration = getDaysInMonth(n1+1, n2); // CAREFULLY MODIFY FOR THE CURRENT MONTH
 
 //FUNCTION TO CREATE THE CALENDAR STRUCTURE
-let createCalendar = function(){
+let generateCalendar = function(){
 for (let i=1; i <= monthDuration; i++ ){
     let divNode = document.createElement("div"); // create de DIV
     divNode.classList.add("divCalendarItem")
@@ -19,7 +19,7 @@ for (let i=1; i <= monthDuration; i++ ){
     mainCalendar.appendChild(divNode);
     console.log(i);
 }}
-createCalendar();
+generateCalendar();
 
 // TO REPLACE VARIABLE d for the element 
 document.getElementById("currentDay").innerHTML=d;
