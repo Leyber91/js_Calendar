@@ -19,9 +19,12 @@ function createModal(event){
 }
 
 function closeModal(event){
-    if(event.target.classList.contains('modal') || event.target.classList.contains('modal__closeIcon')||event.key === "Escape"){
-        deleteModal();
+    console.log(`1`);
+    if(event.target.classList.contains('modal') || event.target.classList.contains('modal__closeIcon')||event.key === 'Escape' || event.target.id=='formButtonCancel'){
         document.getElementById('modal').removeEventListener('click', closeModal);
+        document.getElementById('formButtonAdd').removeEventListener('click', checkImputs);
+        document.getElementById('formButtonCancel').removeEventListener('click', closeModal);
+        deleteModal();
     }
 }
 
@@ -44,10 +47,12 @@ function createModalMain(event){
         var buttonCancel=document.createElement('button');
         buttonCancel.setAttribute('class', 'modal__button modal__button__cancel clickable');
         buttonCancel.innerHTML='Cancel';
+        buttonCancel.setAttribute('id', 'formButtonCancel');
 
         var buttonAdd=document.createElement('button');
         buttonAdd.setAttribute('class', 'modal__button modal__button__add clickable');
         buttonAdd.innerHTML='Add';
+        buttonAdd.setAttribute('id', 'formButtonAdd');
 
         var buttonsContainer=document.createElement('div');
         buttonsContainer.setAttribute('class', 'modal__buttonsContainer');
@@ -55,9 +60,19 @@ function createModalMain(event){
         buttonsContainer.appendChild(buttonCancel);
         buttonsContainer.appendChild(buttonAdd);
         modalMain.appendChild(buttonsContainer);
+
+        buttonAdd.addEventListener('click', checkImputs);
+        buttonCancel.addEventListener('click', closeModal)
+
+
     }
 
     return modalMain;
+}
+
+
+function checkImputs(event){
+    console.log('hola');
 }
 
 var formContent='<h2>New Event</h2><form><label for="formTitle">Title:</label><br><input type="text" id="formTitle" name="formTitle"><br><label for="formInitialDate">Initial date:</label><br><input type="date" id="formInitialDate" name="formInitialDate"><br><input type="checkbox" id="formHasEndDate" name="formHasEndDate" value="formHasEndDate"><label for="formHasEndDate"> End date</label><br><div id="endDateContainer"><label for="formEndDate">End date:</label><br><input type="date" id="formEndDate" name="formEndDate"><br></div><input type="checkbox" id="formHasReminder" name="formHasReminder" value="formHasReminder"><label for="formHasEndDate"> Reminde me when this event expires</label><br><div id="reminderContainer"><label for="formReminderTime">Time: </label><br><select id="formReminderTime" name="formReminderTime"><option value=5>5 min.</option><option value=10>10 min.</option><option value=15>15 min.</option><option value=30>30 min.</option><option value=60>1 h.</option></select></div><label for="formDescription"> Description: </label><br><textarea name="formDescription" rows="10" cols="30"></textarea><br><label for="formEventType">Event type: </label><br><select id="formEventType" name="formEventType"><option value="meeting">Meeting</option><option value="personal">Personal</option><option value="study">Study</option><option value="birthday">Birthday</option></select></form>'

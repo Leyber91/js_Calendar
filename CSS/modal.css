@@ -1,0 +1,59 @@
+.modal{
+    z-index: 1;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height: 100vh;
+    background-color: #00000055;
+}
+.modal__main{
+    margin:15vh auto ;
+    width:70vw;
+    height: 70vh;
+    background-color: white;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.modal__closeIcon{
+    position: relative;
+    float: right;
+    right: 1em;
+    top: 1em;
+    color:black;
+    font-size: 1.5em;
+}
+
+.modal__main>form{
+    
+    width: 30em;
+    text-align: left;
+    margin: 0 auto;
+}
+.modal__main>form>*{
+    margin-bottom: 0.8em;
+
+}
+.modal__main>form>input[type=text],textarea{
+    width:100%;
+
+}
+
+.modal__buttonsContainer{
+    padding: 1.5em 0;
+    display: flex;
+    justify-content: space-around;
+    width: 30em;
+    margin: 0 auto;
+}
+.modal__button{
+    width:30%;
+    color: white;
+}
+.modal__button__add{
+    background-color: green;
+}
+.modal__button__cancel{
+    background-color: red;
+}

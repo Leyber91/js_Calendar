@@ -144,7 +144,7 @@ function saveReminders(){
 
 function addReminder(element){
     reminders.push(element);
-    reminders.sort((a,b)=>(a.initialDate.getTime()-a.reminder*60*1000)-(b.initialDate.getTime()-b.reminder*60*1000));
+    reminders.sort((a,b)=>((a.initialDate.getTime()-(a.reminder*60*1000))-(b.initialDate.getTime()-(b.reminder*60*1000))));
     saveReminders();
 }
 
