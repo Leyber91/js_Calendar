@@ -1,3 +1,7 @@
+.displayNone{
+    display:none;
+}
+
 .modal{
     z-index: 1;
     position:absolute;
@@ -32,7 +36,7 @@
     margin: 0 auto;
 }
 .modal__main>form>*{
-    margin-bottom: 0.8em;
+    margin-bottom: 1em;
 
 }
 .modal__main>form>input[type=text],textarea{
@@ -56,4 +60,33 @@
 }
 .modal__button__cancel{
     background-color: red;
+}
+
+.messageBackground{
+    z-index: 1;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height: 100vh;
+    background-color: #00000055;
+}
+.message{
+    margin:25vh auto ;
+    width:40vw;
+    min-height: 10vh;
+    background-color: white;
+    text-align: center;
+    padding: 0.5em;
+    font-size: x-large;
+    padding: 1em;
+}
+
+.message__button{
+    margin-top: 3em;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+    padding: 0.5em 2em;
 }
