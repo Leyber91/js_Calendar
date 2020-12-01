@@ -181,3 +181,7 @@ function f2(){
         deleteEventFromCalendar(e);
     }
 }*/
+
+//setInterval(function(){ alert("One minute has passed"); }, 60000);
+//setInterval(function(){ console.log("Ten seconds have passed"); }, 10000);
+
