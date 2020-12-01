@@ -144,7 +144,7 @@ function saveReminders(){
 
 function addReminder(element){
     reminders.push(element);
-    reminders.sort((a,b)=>a.initialDate.getTime()-b.initialDate.getTime());
+    reminders.sort((a,b)=>(a.initialDate.getTime()-a.reminder*60*1000)-(b.initialDate.getTime()-b.reminder*60*1000));
     saveReminders();
 }
 
@@ -154,7 +154,7 @@ function deleteReminder(reminder){
     reminders.splice(index, 1);
 }
 
-/*function f1(){
+function f1(){
     for(let i=3; i>0; i--){
         let e={
             'title': 'dia '+i,
@@ -180,4 +180,4 @@ function f2(){
         }
         deleteEventFromCalendar(e);
     }
-}*/
+}
