@@ -55,6 +55,10 @@ main {
     position: relative;
 }
 
+.clickable{
+    cursor: pointer;
+}
+
 .modal{
     z-index: 1;
     position:absolute;
@@ -69,6 +73,8 @@ main {
     width:70vw;
     height: 70vh;
     background-color: white;
+    text-align: center;
+    padding: 0.5em;
 }
 
 .modal__closeIcon{
@@ -78,6 +84,21 @@ main {
     top: 1em;
     color:black;
     font-size: 1.5em;
+}
+
+.modal__main>form{
+    
+    width: 30em;
+    text-align: left;
+    margin: 0 auto;
+}
+.modal__main>form>*{
+    margin-bottom: 0.8em;
+
+}
+.modal__main>form>input[type=text],textarea{
+    width:100%;
+
 }
 
 
