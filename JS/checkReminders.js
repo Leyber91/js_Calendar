@@ -80,6 +80,14 @@ let checkCheckReminder = function (){
             console.log(actualTimeMS);
             let timeRemainingToEvent = (startEventDateMS - actualTimeMS)/(1000*60);
             console.log(timeRemainingToEvent);
+            let x = timeRemainingToReminder;
+            let y = timeRemainingToEvent;
+            if (x <= 0 ){
+                if (y < reminders[0].reminder){
+                    alert(reminders[0].reminder + " minutes left to " + reminders[0].title);
+                }
+
+            };
 
 
             
