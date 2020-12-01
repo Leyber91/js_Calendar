@@ -47,6 +47,7 @@ let addingEmptyDivsBefore = function(){
             for (let i = d1-1 ; i > 0 ; i--){
                 let divNode = document.createElement("div"); // create de DIV
                 divNode.classList.add("divCalendarItem")
+                divNode.classList.add("divCalendarEmptyItem")
                 // we generate empty object
                 mainCalendar.prepend(divNode); // append at beginning
             }
@@ -66,6 +67,7 @@ let addingEmptyDivAfter = function(){
     while (z > 0) {
         let divNode = document.createElement("div"); // create de DIV
         divNode.classList.add("divCalendarItem")
+        divNode.classList.add("divCalendarEmptyItem")
         // we generate empty object
         mainCalendar.append(divNode); // append at beginning
         z--;

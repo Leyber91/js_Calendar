@@ -53,11 +53,19 @@ main {
     min-height: 2em;
     min-width: 3em;
     position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.divCalendarEmptyItem{
+    background-color: gray;
 }
 
 .clickable{
     cursor: pointer;
 }
+
 
 
 
