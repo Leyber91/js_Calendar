@@ -85,11 +85,13 @@ let checkCheckReminder = function (){
             
             // alert made
 
-            // make the time differente with the beginning of the remainder.
+            // Time remaining to the reminder.
+            let timeRemainingToReminder = timeRemainingToEvent - reminders[0].reminder;
+            console.log(timeRemainingToReminder)
 
             let reminderMessageAlert = function(){
 
-                alert(reminders[0].reminder + " minutes before " + reminders[0].title +"\n" + 'You actually have ' + timeRemainingToEvent + ' minutes left'); };
+                alert(reminders[0].reminder + " minutes before " + reminders[0].title +"\n\n" + 'You actually have ' + timeRemainingToEvent + ' minutes left' +"\n\n" + 'You will be reminded for this event in ' + timeRemainingToReminder+' minutes'); };
             reminderMessageAlert();
         }
 // erase previous reminder
