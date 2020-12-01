@@ -138,8 +138,10 @@ function getReminders(){
 }
 
 function saveReminders(){
+    console.log(localStorage.getItem('reminders'));
     remindersJson=JSON.stringify(reminders);
     localStorage.setItem('reminders', remindersJson);
+    console.log(localStorage.getItem('reminders'));
 }
 
 function addReminder(element){
@@ -152,6 +154,7 @@ function deleteReminder(reminder){
     console.log(reminder);
     const index=reminders.indexOf(reminder);
     reminders.splice(index, 1);
+    saveReminders();
 }
 
 function f1(){
