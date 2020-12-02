@@ -18,7 +18,10 @@ let monthDuration = getDaysInMonth(n1+1, n2); // CAREFULLY MODIFY FOR THE CURREN
 
 //FUNCTION TO CREATE THE CALENDAR STRUCTURE
 let generateCalendar = function(){
+    monthDuration = getDaysInMonth(n1+1, n2);
+    mainCalendar.innerHTML="";
 for (let i=1; i <= monthDuration; i++ ){
+    
     let divNode = document.createElement("div"); // create de DIV
     divNode.classList.add("divCalendarItem")
     let numberContainer=document.createElement("div");
@@ -28,9 +31,11 @@ for (let i=1; i <= monthDuration; i++ ){
     numberContainer.innerHTML = i;
     divNode.appendChild(numberContainer);
     divNode.appendChild(eventContainer);
+
     mainCalendar.appendChild(divNode);
     //Add here to add a class to each month.
     //console.log(i);
+
 }}
 generateCalendar();
 
@@ -53,9 +58,10 @@ let addingEmptyDivsBefore = function(){
         for (let i = 6; i > 0; i-- ){
             let divNode = document.createElement("div"); // create de DIV
             divNode.classList.add("divCalendarItem")
+            divNode.classList.add("divCalendarEmptyItem")
             // we generate an empty object
             mainCalendar.prepend(divNode); // append at beginning
-            //console.log(i);
+            //console.log(i); 
         }} else {
             for (let i = d1-1 ; i > 0 ; i--){
                 let divNode = document.createElement("div"); // create de DIV
