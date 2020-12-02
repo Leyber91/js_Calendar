@@ -135,6 +135,12 @@ main {
     cursor: pointer;
 }
 
+#buttonPlusCurrentMonth {
+    justify-content: space-between;
+    display: flex;
+    
+}
+
 
 
 
