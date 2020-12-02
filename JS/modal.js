@@ -13,10 +13,6 @@ var eventToDelete='';
 
 /*false event*/
 
-var falseEvent=document.getElementById('falseEvent');
-falseEvent.addEventListener('click', createModal);
-
-
 function createModal(event) {
   var modal = document.createElement("div");
   modal.classList.add("modal");
