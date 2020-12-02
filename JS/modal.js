@@ -56,7 +56,6 @@ function deleteModal() {
 }
 
 function createModalMain(event) {
-  console.log(event.target.id)
   var closeIcon = document.createElement("i");
   closeIcon.setAttribute("class", "far fa-times-circle clickable");
   closeIcon.classList.add("modal__closeIcon");
@@ -64,10 +63,8 @@ function createModalMain(event) {
   var modalMain = document.createElement("div");
   modalMain.classList.add("modal__main");
   modalMain.appendChild(closeIcon);
-  console.log(event.target);
   if (event.target.id == "addCalendarEvent" || event.target.classList.contains('addButton')) {
     isFormEvent=true;
-    console.log(formContent);
     modalMain.innerHTML += formContent;
     
     var buttonCancel = document.createElement("button");
@@ -136,7 +133,6 @@ function createModalMain(event) {
         }
       }
     }, 100);
-    console.log(modalMain)
   }else{
     isFormEvent=false;
     let position=event.target.value%100;
@@ -147,9 +143,6 @@ function createModalMain(event) {
 
     mess.innerHTML+='<h2>'+thisEvent.title+'</h2>';
     if(thisEvent.endDate){
-      console.log(new Date(thisEvent.initialDate))
-      console.log(thisEvent.initialDate)
-
       if(areSameDate(new Date(thisEvent.initialDate), new Date(thisEvent.endDate))){
         mess.innerHTML+='<p><strong>Date:</strong> '+convertDate(thisEvent.initialDate)+' from '+convertTime(thisEvent.initialDate)+' to '+convertTime(thisEvent.endDate);
       }else{
@@ -208,7 +201,8 @@ function checkImputs(event) {
   type = document.getElementById("formEventType").value;
 
   let check=0;
-  if ((title.length<0)) {
+  if ((title.length<1)) {
+    
     showMessage("Title is required");
     check++;
   }else if(title.length>60){
@@ -262,8 +256,6 @@ function checkImputs(event) {
     }
   }
 function deleteEventFromModal(event){
-  console.log(eventToDelete);
-  console.log(event.target);
   deleteEventFromCalendar(eventToDelete);
   closeModal(event);
 }

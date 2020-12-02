@@ -20,6 +20,7 @@
     padding: 0.5em;
     overflow-y: scroll;
     border-radius: 50px;
+    border: 1px solid #c5c6c7;
 }
 
 .modal__closeIcon{
@@ -89,12 +90,13 @@
     margin:25vh auto ;
     width:40vw;
     min-height: 10vh;
-    background-color: white;
+
     text-align: center;
     padding: 0.5em;
     font-size: x-large;
     padding: 1em;
     border-radius: 25px;
+    border: 1px solid #c5c6c7;
     background-color: #1f2833;
 }
 
