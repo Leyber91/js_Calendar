@@ -30,9 +30,18 @@ let addNextMonth = function() {
         
         d.setMonth(currentMonth);
         d.setFullYear(currentYear);
+        n1 = currentMonth;
+        n2 = currentYear;
         console.log(currentMonth + " " + currentYear);
         console.log(d)
+        generateCalendar();
+        startingWeekDay = startOfMonth(d);
+        d1 = startingWeekDay.getDay();
+        addingEmptyDivsBefore();
+        parentCalendarChildren = document.getElementById("mainCalendarFlexBox").childElementCount;
+        addingEmptyDivAfter();
         displayCalendar();
+       // displayCalendar();
     }
 
 
@@ -67,6 +76,14 @@ let addMonthBefore = function() {
     
     d.setMonth(currentMonth);
     d.setFullYear(currentYear);
+    n1 = currentMonth;
+    n2 = currentYear;
+    generateCalendar();
+    startingWeekDay = startOfMonth(d);
+    d1 = startingWeekDay.getDay();
+    addingEmptyDivsBefore();
+    parentCalendarChildren = document.getElementById("mainCalendarFlexBox").childElementCount;
+    addingEmptyDivAfter();
     displayCalendar();
 
 }
