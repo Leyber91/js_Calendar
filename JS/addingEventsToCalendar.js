@@ -1,9 +1,17 @@
+let selectedMonth = calendar[n2][n1];
+displayCalendar();
 
-    let selectedMonth = calendar[n2][n1];
+function displayCalendar(){
+    selectedMonth = calendar[n2][n1];
     selectedMonth.forEach(eventToDisplay);
+}
 
 function eventToDisplay (item){
-    
+    let eventDayPlus1 = selectedMonth.indexOf(item) + 1;
+    let chosenIdOnCalendar = "day"+eventDayPlus1;
+    let selectSpotOnCalendar = document.getElementById(chosenIdOnCalendar);
+    selectSpotOnCalendar.innerHTML='';
+
     item.forEach(eventToAdd);
         function eventToAdd (x){
             if (x){
@@ -22,9 +30,7 @@ function eventToDisplay (item){
                 btnNode.value = eventId;
                 // append button to Calendar
                 // define parent event to append 
-                let eventDayPlus1 = selectedMonth.indexOf(item) + 1;
-                let chosenIdOnCalendar = "day"+eventDayPlus1;
-                let selectSpotOnCalendar = document.getElementById(chosenIdOnCalendar);
+                selectSpotOnCalendar.innerHTML='';
                 selectSpotOnCalendar.appendChild(btnNode);
                 
 
@@ -48,6 +54,8 @@ function eventToDisplay (item){
                 console.log("There is no event");
             };
 
-    }}
+    }
+    
+}
 //buttonAdd.addEventListener('click', eventToDisplay());
 //mainCalendar.appendChild()

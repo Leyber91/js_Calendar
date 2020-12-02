@@ -15,12 +15,16 @@ let generateCalendar = function(){
 for (let i=1; i <= monthDuration; i++ ){
     let divNode = document.createElement("div"); // create de DIV
     divNode.classList.add("divCalendarItem")
+    let numberContainer=document.createElement("div");
+    let eventContainer=document.createElement("div");
     // An id must be added to each element
-    divNode.id = "day"+ i;
-    divNode.innerHTML = i;
+    eventContainer.id = "day"+ i;
+    numberContainer.innerHTML = i;
+    divNode.appendChild(numberContainer);
+    divNode.appendChild(eventContainer);
     mainCalendar.appendChild(divNode);
     //Add here to add a class to each month.
-    console.log(i);
+    console.log(divNode);
 }}
 generateCalendar();
 

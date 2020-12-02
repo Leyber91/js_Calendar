@@ -1,9 +1,15 @@
+var formContent =
+'<h2>New Event</h2><form><label for="formTitle">Title:</label><br><input type="text" id="formTitle" name="formTitle"><br><label for="formInitialDate">Initial date:</label><br><input type="datetime-local" id="formInitialDate" name="formInitialDate"><br><input type="checkbox" id="formHasEndDate" name="formHasEndDate" value="endDateContainer"><label for="formHasEndDate"> End date</label><br><div id="endDateContainer" class="displayNone"><label for="formEndDate">End date:</label><br><input type="datetime-local" id="formEndDate" name="formEndDate"><br></div><input type="checkbox" id="formHasReminder" name="formHasReminder" value="reminderContainer"><label for="formHasReminder"> Reminde me when this event expires</label><br><div id="reminderContainer" class="displayNone"><label for="formReminderTime">Time: </label><br><select id="formReminderTime" name="formReminderTime"><option value=5>5 min.</option><option value=10>10 min.</option><option value=15>15 min.</option><option value=30>30 min.</option><option value=60>1 h.</option></select></div><label for="formDescription"> Description: </label><br><textarea id="formDescription" name="formDescription" rows="10" cols="30"></textarea><br><label for="formEventType">Event type: </label><br><select id="formEventType" name="formEventType"><option value=null></option><option value="meeting">Meeting</option><option value="personal">Personal</option><option value="study">Study</option><option value="birthday">Birthday</option></select></form>';
+
 var modalContainer = document.getElementById("modalContainer");
 var addEvent = document.getElementById("addCalendarEvent");
-var btnsCalendarEvent=document.querySelector('.btnCalendarEvent')
+var mainCalendarFlexBox=document.getElementById('mainCalendarFlexBox');
+mainCalendarFlexBox.addEventListener('click', checkIfEvent);
 addEvent.addEventListener("click", createModal);
 document.addEventListener("keydown", closeModal);
+
 var isFormEvent=false;
+var eventToDelete='';
 
 /*false event*/
 
@@ -31,7 +37,8 @@ function closeModal(event) {
     event.target.classList.contains("modal__closeIcon") ||
     event.key === "Escape" ||
     event.target.id == "formButtonCancel"||
-    (event.target.id == "formButtonAdd" && canCloseModal)
+    (event.target.id == "formButtonAdd" && canCloseModal)||
+    event.target.id=='formButtonDelete'
   ) {
     document.getElementById("modal").removeEventListener("click", closeModal);
     if(isFormEvent){
@@ -41,6 +48,8 @@ function closeModal(event) {
       document
         .getElementById("formButtonCancel")
         .removeEventListener("click", closeModal);
+    }else{
+
     }
     
     deleteModal();
@@ -52,6 +61,7 @@ function deleteModal() {
 }
 
 function createModalMain(event) {
+  console.log(event.target.id)
   var closeIcon = document.createElement("i");
   closeIcon.setAttribute("class", "far fa-times-circle clickable");
   closeIcon.classList.add("modal__closeIcon");
@@ -62,6 +72,7 @@ function createModalMain(event) {
   console.log(event);
   if (event.target.id == "addCalendarEvent") {
     isFormEvent=true;
+    console.log(formContent);
     modalMain.innerHTML += formContent;
     var buttonCancel = document.createElement("button");
     buttonCancel.setAttribute(
@@ -108,6 +119,7 @@ function createModalMain(event) {
         }
       }
     }, 500);
+    console.log(modalMain)
   }else{
     isFormEvent=false;
     let position=event.target.value%100;
@@ -118,6 +130,9 @@ function createModalMain(event) {
 
     mess.innerHTML+='<h2>'+thisEvent.title+'</h2>';
     if(thisEvent.endDate){
+      console.log(new Date(thisEvent.initialDate))
+      console.log(thisEvent.initialDate)
+
       if(areSameDate(new Date(thisEvent.initialDate), new Date(thisEvent.endDate))){
         mess.innerHTML+='<p><strong>Date:</strong> '+convertDate(thisEvent.initialDate)+' from '+convertTime(thisEvent.initialDate)+' to '+convertTime(thisEvent.endDate);
       }else{
@@ -146,6 +161,8 @@ function createModalMain(event) {
     );
     buttonDelete.innerHTML = "Delete event";
     buttonDelete.setAttribute("id", "formButtonDelete");
+    eventToDelete=thisEvent;
+    buttonDelete.addEventListener('click', deleteEventFromModal);
     
     mess.appendChild(buttonDelete);
     modalMain.appendChild(mess);
@@ -220,5 +237,15 @@ function checkImputs(event) {
     return text;
   }
 
-var formContent =
-'<h2>New Event</h2><form><label for="formTitle">Title:</label><br><input type="text" id="formTitle" name="formTitle"><br><label for="formInitialDate">Initial date:</label><br><input type="datetime-local" id="formInitialDate" name="formInitialDate"><br><input type="checkbox" id="formHasEndDate" name="formHasEndDate" value="endDateContainer"><label for="formHasEndDate"> End date</label><br><div id="endDateContainer" class="displayNone"><label for="formEndDate">End date:</label><br><input type="datetime-local" id="formEndDate" name="formEndDate"><br></div><input type="checkbox" id="formHasReminder" name="formHasReminder" value="reminderContainer"><label for="formHasReminder"> Reminde me when this event expires</label><br><div id="reminderContainer" class="displayNone"><label for="formReminderTime">Time: </label><br><select id="formReminderTime" name="formReminderTime"><option value=5>5 min.</option><option value=10>10 min.</option><option value=15>15 min.</option><option value=30>30 min.</option><option value=60>1 h.</option></select></div><label for="formDescription"> Description: </label><br><textarea id="formDescription" name="formDescription" rows="10" cols="30"></textarea><br><label for="formEventType">Event type: </label><br><select id="formEventType" name="formEventType"><option value=null></option><option value="meeting">Meeting</option><option value="personal">Personal</option><option value="study">Study</option><option value="birthday">Birthday</option></select></form>';
+  function checkIfEvent(event){
+    if(event.target.classList.contains('btnCalendarEvent')){
+      createModal(event);
+    }
+  }
+function deleteEventFromModal(event){
+  console.log(eventToDelete);
+  console.log(event.target);
+  deleteEventFromCalendar(eventToDelete);
+  closeModal(event);
+}
+

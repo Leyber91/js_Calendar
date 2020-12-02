@@ -102,29 +102,34 @@ function setEvent(eventObject, day) {
     eventObject
   );
   saveCalendar();
+  displayCalendar();
   if (eventObject.reminder) {
     addReminder(eventObject);
   }
 }
 
 function deleteEvent(element, day) {
+  console.log(element);
   console.log(day);
   const d = calendar[day.getFullYear()][day.getMonth()][day.getDate() - 1];
   const index = d.indexOf(element);
   d.splice(index, 1);
-  saveCalendar();
+  
   if (element.reminder) {
     deleteReminder(element);
   }
 }
 
 function deleteEventFromCalendar(element) {
+  
   if (element.endDate) {
-    let isSameDay = areSameDate(Date(element.initialDate), Date(element.endDate));
+    
+    let isSameDay = areSameDate(new Date(element.initialDate), new Date(element.endDate));
+    console.log(isSameDay)
     if (isSameDay) {
-      deleteEvent(element, Date(element.initialDate));
+      deleteEvent(element, new Date(element.initialDate));
     } else {
-      let diference = daysDiference(Date(element.initialDate), Date(element.endDate));
+      let diference = daysDiference(new Date(element.initialDate), new Date(element.endDate));
       for (let i = 0; i <= diference; i++) {
         let d = new Date(element.initialDate);
         d.setDate(d.getDate() + i);
@@ -132,11 +137,17 @@ function deleteEventFromCalendar(element) {
       }
     }
   } else {
-    deleteEvent(element, element.initialDate);
+    deleteEvent(element, new Date(element.initialDate));
   }
+  saveCalendar();
+  saveReminders();
+  console.log(calendar);
+  displayCalendar();
 }
 
 function areSameDate(initialDate, finalDate) {
+  initialDate=new Date(initialDate);
+  finalDate=new Date(finalDate);
   return (
     initialDate.getFullYear() == finalDate.getFullYear() &&
     initialDate.getMonth() == finalDate.getMonth() &&
