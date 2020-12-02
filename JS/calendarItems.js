@@ -2,8 +2,14 @@ let mainCalendar = document.getElementById("mainCalendarFlexBox");
 
  // adding the class to receive the style
 // We define the actual months and the actual year.
-let d = new Date();
+
+let d = new Date(); /// this is the key variable to modify each month
+/// set the month with the set month function
+/// IMPORTANT: Set month 
+
+
 let n1 = d.getMonth();
+//n1 = n1 - 10;
 let n2 = d.getFullYear();
 let getDaysInMonth = function(month,year) {
     return new Date(year, month, 0).getDate();
@@ -20,7 +26,7 @@ for (let i=1; i <= monthDuration; i++ ){
     divNode.innerHTML = i;
     mainCalendar.appendChild(divNode);
     //Add here to add a class to each month.
-    console.log(i);
+    //console.log(i);
 }}
 generateCalendar();
 
@@ -36,7 +42,7 @@ let startOfMonth = function(date) {
 
 let startingWeekDay = startOfMonth(d);
 let d1 = startingWeekDay.getDay();
-console.log(d1);
+//console.log(d1);
 // prepend function in order to add empty cells before the beginning of a month
 let addingEmptyDivsBefore = function(){
     if (d1 === 0){
@@ -45,7 +51,7 @@ let addingEmptyDivsBefore = function(){
             divNode.classList.add("divCalendarItem")
             // we generate an empty object
             mainCalendar.prepend(divNode); // append at beginning
-            console.log(i);
+            //console.log(i);
         }} else {
             for (let i = d1-1 ; i > 0 ; i--){
                 let divNode = document.createElement("div"); // create de DIV
@@ -61,10 +67,10 @@ addingEmptyDivsBefore();
 
 //for this function we substracted the remanent to the total numbers of divs on a row.
 let parentCalendarChildren = document.getElementById("mainCalendarFlexBox").childElementCount;
-console.log(parentCalendarChildren) // we use this one to get the number of elements
+//console.log(parentCalendarChildren) // we use this one to get the number of elements
 let addingEmptyDivAfter = function(){
     let numOfDivToAdd = 7 - (parentCalendarChildren%7);
-    console.log(numOfDivToAdd);
+    //console.log(numOfDivToAdd);
     let z = numOfDivToAdd;
 
     while (z > 0) {
