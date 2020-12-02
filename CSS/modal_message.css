@@ -15,10 +15,11 @@
     margin:15vh auto ;
     width:70vw;
     max-height: 70vh;
-    background-color: white;
+    background-color: #1f2833;
     text-align: center;
     padding: 0.5em;
     overflow-y: scroll;
+    border-radius: 50px;
 }
 
 .modal__closeIcon{
@@ -26,7 +27,7 @@
     float: right;
     right: 1em;
     top: 1em;
-    color:black;
+    color:#c5c6c7;
     font-size: 1.5em;
 }
 
@@ -35,6 +36,10 @@
     width: 30em;
     text-align: left;
     margin: 0 auto;
+}
+.modal__main>form input, textarea{
+    border:none;
+    background-color: #c5c6c7;
 }
 .modal__main>form>*{
     margin-bottom: 1em;
@@ -54,17 +59,22 @@
 }
 .modal__button{
     width:30%;
-    color: white;
+    color: #1f2833;
+    font-size: large;
+    font-weight: 700;
+    border-radius:25px;
+    border:none;
+    padding: 0.5em;
 }
 .modal__button__add{
-    background-color: green;
+    background-color: #66fcf1;
 }
 .modal__button__cancel{
-    background-color: red;
+    background-color: #45a29e;
 }
 .modal__button__delete{
     margin: 1.5em 0;
-    background-color: red;
+    background-color: #45a29e;
 }
 .modal__eventMessage{
     
@@ -104,6 +114,7 @@
 
 
 ::-webkit-scrollbar {
+    display:none;
     width: 5px;
   }
   

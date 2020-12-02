@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="./CSS/style.css" />
     <link rel="stylesheet" href="./CSS/modal_message.css" />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&family=Roboto:wght@100;400;500;700;900&display=swap" rel="stylesheet">
   </head>
   <body>
     <main>
         <section id='modalContainer'></section>
         <section id='messageContainer'></section>
       <section id="headerTitle">
-        <h1>JS CALENDAR</h1>
-        <button id="addCalendarEvent">Add Event</button>
+        <button id="addCalendarEvent" class='clickable'>+</button>
+        <h1 class='title'>JS CALENDAR</h1>
       </section>
       <section id="monthDisplay">
-        <div id="currentDay">currentDay</div>
         <div id="weekDayWordsLine">
           <div class="weekDayWords"><p>Monday</p></div>
           <div class="weekDayWords"><p>Tuesday</p></div>

@@ -22,14 +22,17 @@ for (let i=1; i <= monthDuration; i++ ){
     numberContainer.innerHTML = i;
     divNode.appendChild(numberContainer);
     divNode.appendChild(eventContainer);
+
+    //is today?
+    if(n1==d.getMonth() && n2==d.getFullYear() &&d.getDate()==i){
+        divNode.classList.add("today")
+    }
     mainCalendar.appendChild(divNode);
     //Add here to add a class to each month.
     console.log(divNode);
 }}
 generateCalendar();
 
-// TO REPLACE VARIABLE d for the element 
-document.getElementById("currentDay").innerHTML=d;
 
 //let d = new Date();
 //let n1 = d.getMonth();

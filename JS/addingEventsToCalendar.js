@@ -17,7 +17,8 @@ function eventToDisplay (item){
             if (x){
                 let eventTitle = x.title;
                 let btnNode = document.createElement("button"); // create a button
-                btnNode.classList.add("btnCalendarEvent"); // add the class to the button
+                btnNode.classList.add("btnCalendarEvent");
+                btnNode.classList.add("clickable"); // add the class to the button
                 btnNode.innerHTML = eventTitle; //  add the text inside the button
                 console.log("Added Event " + eventTitle);
                 btnNode.id = eventTitle;
@@ -30,7 +31,6 @@ function eventToDisplay (item){
                 btnNode.value = eventId;
                 // append button to Calendar
                 // define parent event to append 
-                selectSpotOnCalendar.innerHTML='';
                 selectSpotOnCalendar.appendChild(btnNode);
                 
 

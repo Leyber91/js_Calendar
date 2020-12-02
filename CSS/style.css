@@ -5,11 +5,20 @@
 }
 
 /* BEGINNING FLEX STRUCTURE */
+body{
+    background-color: #0b0c10;
+    color: #c5c6c7
+}
 main {
     display: flex;
     flex-direction: column;
+    font-family: 'Lato', sans-serif;
+    
 }
-
+.title{
+    font-weight: 900;
+    font-size: xx-large;
+}
 #headerTitle {
     flex-basis: 20%;
     align-content: space-between;
@@ -18,10 +27,26 @@ main {
 /* MAIN MONTH SECTION */
 #monthDisplay {
     flex-basis: 80%;
-    margin: 2em 1em;
+    margin: 2em auto;
     flex-direction: column;
 }
-
+#addCalendarEvent{
+    position: fixed;
+    top:0.6em;
+    right: 0.8em;
+    font-size: 40px;
+    width:50px;
+    height: 50px;
+    padding: 0%;
+    border-radius: 50%;
+    border:none;
+    background-color: #66fcf1;
+}
+#addCalendarEvent:focus{
+    outline: none;
+    background-color: #45a29e;
+    border: 1px solid white;
+}
 #currentDay {
     flex-basis: 5%;
     text-align: center;
@@ -30,43 +55,80 @@ main {
 #weekDayWordsLine {
     flex-basis: 10%;
     display: flex;
-    align-items: space-evenly;
+    align-items: space-between;
     text-align: center;
+    align-content: center;
     
 }
     .weekDayWords{
-        flex-basis: 13%;
+        flex-basis: 14%;
         /*border: 0.2em solid #ffffff;*/
         min-height: 2em;
         min-width: 3em;
         position: relative;
+        font-weight: 700;
+        font-size: large;
     }
 
 #mainCalendarFlexBox {
     flex-basis: 85%;
     display: flex;
     flex-wrap: wrap;
+    margin:0 auto;
 }
+
 .divCalendarItem {
-    flex-basis: 13%;
-    border: 0.2em solid #000000;
-    min-height: 2em;
-    min-width: 3em;
-    position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    flex-basis: 14%;
+    border: 0.1em solid #45a29e;
+    min-height: 7em;
+    min-width: 3em;
+    
 }
-    .divCalendarEvent {
-        text-align: center;
-        position: relative;
-        background-color: black;
-        color:white;
-        border-radius: 0.2em;
-    }
+.today{
+    background-color: #45a29e;
+}
+.divCalendarItem>div:nth-child(2){
+    width:100%;;
+    text-align: center;
+    padding-bottom: 0.5em;
+    
+}
+.divCalendarItem>div:nth-child(1){
+    margin: 0.5em 0.5em;
+    text-align: left;
+    font-weight: 700;
+    font-size: large;
+    
+}
+.divCalendarItem>div:nth-child(2)>button{
+    width:90%;
+    background-color: #1f2833;
+    color: #c5c6c7;
+    padding: 0.2em 0.5em;
+    margin:0.3em auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-radius: 10px;
+    border:none;
+    box-shadow: 1px 1px 2px #000a;
+    font-weight: 700;
+    font-size: medium;
+    font-family: 'Lato', sans-serif;
+
+}
+.divCalendarEvent {
+    text-align: center;
+    position: relative;
+    background-color: black;
+    color:white;
+    border-radius: 0.2em;
+}
 
 .divCalendarEmptyItem{
-    background-color: gray;
+    background-color: #1f2833;
 }
 
 .clickable{
