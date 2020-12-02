@@ -57,6 +57,13 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
 }
+    .divCalendarEvent {
+        text-align: center;
+        position: relative;
+        background-color: black;
+        color:white;
+        border-radius: 0.2em;
+    }
 
 .divCalendarEmptyItem{
     background-color: gray;
