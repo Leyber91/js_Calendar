@@ -4,6 +4,7 @@ displayCalendar();
 function displayCalendar(){
     selectedMonth = calendar[n2][n1];
     selectedMonth.forEach(eventToDisplay);
+    console.log("I am working");
 }
 
 function eventToDisplay (item){
@@ -11,6 +12,7 @@ function eventToDisplay (item){
     let chosenIdOnCalendar = "day"+eventDayPlus1;
     let selectSpotOnCalendar = document.getElementById(chosenIdOnCalendar);
     selectSpotOnCalendar.innerHTML='';
+    console.log(item);
 
     item.forEach(eventToAdd);
         function eventToAdd (x){
@@ -32,23 +34,6 @@ function eventToDisplay (item){
                 // append button to Calendar
                 // define parent event to append 
                 selectSpotOnCalendar.appendChild(btnNode);
-                
-
-                //CONSOLE LOG MADNESS START
-                /*console.log(x);
-                console.log(item.indexOf(x)); //returns event position
-                console.log(selectedMonth.indexOf(item)); // returns day
-                console.log(eventDay); // returns day index
-                console.log(eventDayPlus1); // returns day 
-                console.log(chosenIdOnCalendar);
-                console.log(eventId); // returns the selected Id
-                console.log(btnNode.value);*/
-                //CONSOLE OG MADNESS END
-                
-                //let dayNumString = i.toString();
-                //let dayId = "Day"+ dayNumString;
-
-                
             }
             else {
                 console.log("There is no event");
