@@ -2,7 +2,7 @@ let mainCalendar = document.getElementById("mainCalendarFlexBox");
 
  // adding the class to receive the style
 // We define the actual months and the actual year.
-
+let todayIs= new Date();
 let d = new Date(); /// this is the key variable to modify each month
 /// set the month with the set month function
 /// IMPORTANT: Set month 
@@ -30,7 +30,7 @@ for (let i=1; i <= monthDuration; i++ ){
     divNode.appendChild(eventContainer);
 
     //is today?
-    if(n1==d.getMonth() && n2==d.getFullYear() &&d.getDate()==i){
+    if(n1==todayIs.getMonth() && n2==todayIs.getFullYear() &&todayIs.getDate()==i){
         divNode.classList.add("today")
     }
     mainCalendar.appendChild(divNode);
