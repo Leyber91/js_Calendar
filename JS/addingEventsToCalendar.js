@@ -23,7 +23,7 @@ function eventToDisplay (item){
                 // append button to Calendar
                 // define parent event to append 
                 let eventDayPlus1 = selectedMonth.indexOf(item) + 1;
-                let chosenIdOnCalendar = "Day"+eventDayPlus1;
+                let chosenIdOnCalendar = "day"+eventDayPlus1;
                 let selectSpotOnCalendar = document.getElementById(chosenIdOnCalendar);
                 selectSpotOnCalendar.appendChild(btnNode);
                 
