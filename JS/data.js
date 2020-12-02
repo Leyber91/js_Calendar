@@ -55,6 +55,10 @@ function saveCalendar() {
   localStorage.setItem("calendar", calendarJson);
 }
 
+function resetCalendar(){
+  calendar=createCalendar(2020,2);
+  saveCalendar();
+}
 function createNewEvent(
   title,
   initialDate,

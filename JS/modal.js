@@ -2,6 +2,7 @@ var modalContainer = document.getElementById("modalContainer");
 var addEvent = document.getElementById("addCalendarEvent");
 addEvent.addEventListener("click", createModal);
 document.addEventListener("keydown", closeModal);
+var canCloseModal=true;
 
 function createModal(event) {
   var modal = document.createElement("div");
@@ -23,7 +24,7 @@ function closeModal(event) {
     event.target.classList.contains("modal__closeIcon") ||
     event.key === "Escape" ||
     event.target.id == "formButtonCancel"||
-    event.target.id == "formButtonAdd"
+    (event.target.id == "formButtonAdd" && canCloseModal)
   ) {
     document.getElementById("modal").removeEventListener("click", closeModal);
     document
@@ -102,6 +103,7 @@ function createModalMain(event) {
 }
 
 function checkImputs(event) {
+  canCloseModal=false;
   const titleRegex = /^\S{1,60}$/;
 
   title = document.getElementById("formTitle").value;
@@ -119,24 +121,34 @@ function checkImputs(event) {
   description = document.getElementById("formDescription").value;
   type = document.getElementById("formEventType").value;
 
+  let check=0;
   if (!titleRegex.test(title)) {
     showMessage("Title is required");
+    check++;
   }else if(initialDate=="Invalid Date"){
     showMessage("Initial date is required.");
+    check++;
   } else if (
     initialDate.getFullYear() < 2020 ||
     initialDate.getFullYear() > 2021
   ) {
     showMessage("This year is not suported.");
+    check++;
   }else if(finalDate=="Invalid Date"){
     showMessage("Final date is required.");
+    check++;
   }else if (finalDate &&finalDate.getTime() - initialDate.getTime() <= 0) {
     showMessage("End date should be after initial date.");
-} else {
-    createNewEvent(title, initialDate, finalDate, reminder, description, type);
-    closeModal(event);
+    check++;
+  }else if((initialDate-new Date())<0 && reminder){
+    showMessage("You can't put a reminder to an event that has expired.");
+    check++;
+  }else {
+      createNewEvent(title, initialDate, finalDate, reminder, description, type);
+      canCloseModal=true;
+      closeModal(event);
+    }
   }
-}
 
 var formContent =
 '<h2>New Event</h2><form><label for="formTitle">Title:</label><br><input type="text" id="formTitle" name="formTitle"><br><label for="formInitialDate">Initial date:</label><br><input type="datetime-local" id="formInitialDate" name="formInitialDate"><br><input type="checkbox" id="formHasEndDate" name="formHasEndDate" value="endDateContainer"><label for="formHasEndDate"> End date</label><br><div id="endDateContainer" class="displayNone"><label for="formEndDate">End date:</label><br><input type="datetime-local" id="formEndDate" name="formEndDate"><br></div><input type="checkbox" id="formHasReminder" name="formHasReminder" value="reminderContainer"><label for="formHasReminder"> Reminde me when this event expires</label><br><div id="reminderContainer" class="displayNone"><label for="formReminderTime">Time: </label><br><select id="formReminderTime" name="formReminderTime"><option value=5>5 min.</option><option value=10>10 min.</option><option value=15>15 min.</option><option value=30>30 min.</option><option value=60>1 h.</option></select></div><label for="formDescription"> Description: </label><br><textarea id="formDescription" name="formDescription" rows="10" cols="30"></textarea><br><label for="formEventType">Event type: </label><br><select id="formEventType" name="formEventType"><option value=null></option><option value="meeting">Meeting</option><option value="personal">Personal</option><option value="study">Study</option><option value="birthday">Birthday</option></select></form>';
