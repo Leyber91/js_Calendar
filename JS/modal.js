@@ -1,8 +1,15 @@
 var modalContainer = document.getElementById("modalContainer");
 var addEvent = document.getElementById("addCalendarEvent");
+var btnsCalendarEvent=document.querySelector('.btnCalendarEvent')
 addEvent.addEventListener("click", createModal);
 document.addEventListener("keydown", closeModal);
-var canCloseModal=true;
+var isFormEvent=false;
+
+/*false event*/
+
+var falseEvent=document.getElementById('falseEvent');
+falseEvent.addEventListener('click', createModal);
+
 
 function createModal(event) {
   var modal = document.createElement("div");
@@ -27,12 +34,15 @@ function closeModal(event) {
     (event.target.id == "formButtonAdd" && canCloseModal)
   ) {
     document.getElementById("modal").removeEventListener("click", closeModal);
-    document
-      .getElementById("formButtonAdd")
-      .removeEventListener("click", checkImputs);
-    document
-      .getElementById("formButtonCancel")
-      .removeEventListener("click", closeModal);
+    if(isFormEvent){
+      document
+        .getElementById("formButtonAdd")
+        .removeEventListener("click", checkImputs);
+      document
+        .getElementById("formButtonCancel")
+        .removeEventListener("click", closeModal);
+    }
+    
     deleteModal();
   }
 }
@@ -49,8 +59,9 @@ function createModalMain(event) {
   var modalMain = document.createElement("div");
   modalMain.classList.add("modal__main");
   modalMain.appendChild(closeIcon);
-
+  console.log(event);
   if (event.target.id == "addCalendarEvent") {
+    isFormEvent=true;
     modalMain.innerHTML += formContent;
     var buttonCancel = document.createElement("button");
     buttonCancel.setAttribute(
@@ -97,14 +108,55 @@ function createModalMain(event) {
         }
       }
     }, 500);
-  }
+  }else{
+    isFormEvent=false;
+    let position=event.target.value%100;
+    let day=(event.target.value-position)/100;
+    let thisEvent=calendar[n2][n1][day][position];
+    let mess=document.createElement('div');
+    mess.setAttribute('class', 'modal__eventMessage');
 
+    mess.innerHTML+='<h2>'+thisEvent.title+'</h2>';
+    if(thisEvent.endDate){
+      if(areSameDate(new Date(thisEvent.initialDate), new Date(thisEvent.endDate))){
+        mess.innerHTML+='<p><strong>Date:</strong> '+convertDate(thisEvent.initialDate)+' from '+convertTime(thisEvent.initialDate)+' to '+convertTime(thisEvent.endDate);
+      }else{
+        mess.innerHTML+='<p><strong>Date:</strong> From'+convertDate(thisEvent.initialDate)+' at '+convertTime(thisEvent.initialDate)+' to '+convertDate(thisEvent.endDate)+' at '+convertTime(thisEvent.endDate)+'</p>';
+      }
+    }
+    else{
+      mess.innerHTML+='<p><strong>Date:</strong> '+convertDate(thisEvent.initialDate)+' at '+convertTime(thisEvent.initialDate)+'</p>';
+    }
+    if(thisEvent.reminder){
+      mess.innerHTML+='<p>Remind me this <strong>'+thisEvent.reminder+' minutes</strong> before it starts </p>';
+    }
+    if(thisEvent.description){
+      mess.innerHTML+='<hr><p><strong>Description:</strong> </p>';
+      mess.innerHTML+='<p>'+thisEvent.description+'</p><hr>';
+    }
+    if(thisEvent.type!="null"){
+      mess.innerHTML+='<p><strong>Type:</strong> '+thisEvent.type+'</p>';
+    }
+    
+
+    var buttonDelete = document.createElement("button");
+    buttonDelete.setAttribute(
+      "class",
+      "modal__button modal__button__delete clickable"
+    );
+    buttonDelete.innerHTML = "Delete event";
+    buttonDelete.setAttribute("id", "formButtonDelete");
+    
+    mess.appendChild(buttonDelete);
+    modalMain.appendChild(mess);
+
+  }
+  
   return modalMain;
 }
 
 function checkImputs(event) {
   canCloseModal=false;
-  const titleRegex = /^\S{1,60}$/;
 
   title = document.getElementById("formTitle").value;
   
@@ -122,9 +174,11 @@ function checkImputs(event) {
   type = document.getElementById("formEventType").value;
 
   let check=0;
-  if (!titleRegex.test(title)) {
+  if ((title.length<0)) {
     showMessage("Title is required");
     check++;
+  }else if(title.length>60){
+    showMessage("Title is too long");
   }else if(initialDate=="Invalid Date"){
     showMessage("Initial date is required.");
     check++;
@@ -148,6 +202,22 @@ function checkImputs(event) {
       canCloseModal=true;
       closeModal(event);
     }
+  }
+
+  function convertDate(dateString){
+    let date=new Date(dateString);
+    let text='';
+    const days=['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    text+=days[date.getDay()]+' '+months[date.getMonth()]+' '+date.getDate()+', '+date.getFullYear();
+    return text;
+  }
+
+  function convertTime(dateString){
+    let date=new Date(dateString);
+    let text='';
+    text+=date.getHours()+':'+date.getMinutes();
+    return text;
   }
 
 var formContent =
