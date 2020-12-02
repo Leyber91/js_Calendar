@@ -21,7 +21,7 @@ let addNextMonth = function() {
             }
 
         else if(currentMonth === 12 & currentYear === 2021) { // This condition is placed in order to stopCurrent
-            showMessage("Cannot go to 2021");
+            showMessage("Cannot go to 2022");
             currentMonth = 11;
             currentYear = 2021;
             console.log(currentMonth + " " + currentYear);
@@ -32,19 +32,8 @@ let addNextMonth = function() {
         d.setFullYear(currentYear);
         console.log(currentMonth + " " + currentYear);
         console.log(d)
+        displayCalendar();
     }
-
-
-/*
-    if ( n1 === 12){
-        n2 = n2+1
-        n1 = 0
-    } else {
-
-    }
-
-    let n1NEXT = n + 1
-*/
 
 
 let addMonthBefore = function() {
@@ -78,12 +67,11 @@ let addMonthBefore = function() {
     
     d.setMonth(currentMonth);
     d.setFullYear(currentYear);
-    console.log(currentMonth + " " + currentYear);
-    console.log(d)
+    displayCalendar();
 
 }
 
-addMonthBefore();
+
 
 //d.setMonth(0);
 //d.setFullYear(252525);
