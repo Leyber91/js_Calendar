@@ -1,4 +1,7 @@
-
+////let btnAfter = document.getElementById("buttonMonthAfter");
+//let btnBefore = document.getElementById("buttonMonthBefore");
+//btnAfter.addEventListener("click", addNextMonth);
+//btnBefore.addEventListener("click",addMonthBefore);
 
 let addNextMonth = function() {
     // this function will display the month After
@@ -85,9 +88,7 @@ let addMonthBefore = function() {
     parentCalendarChildren = document.getElementById("mainCalendarFlexBox").childElementCount;
     addingEmptyDivAfter();
     displayCalendar();
-
 }
-
 
 
 //d.setMonth(0);

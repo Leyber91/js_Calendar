@@ -11,6 +11,9 @@ let d = new Date(); /// this is the key variable to modify each month
 let n1 = d.getMonth();
 //n1 = n1 - 10;
 let n2 = d.getFullYear();
+
+
+//console.log(dateMonthYear);
 let getDaysInMonth = function(month,year) {
     return new Date(year, month, 0).getDate();
 }
@@ -46,6 +49,12 @@ for (let i=1; i <= monthDuration; i++ ){
         divNode.classList.add("today")
     }
     mainCalendar.appendChild(divNode);
+
+    // define where to take the title
+
+    let month = ["January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+    let dateMonthYear = month[n1] + " " + n2;
+    document.getElementById("curentMonthplusYear").innerHTML = dateMonthYear;
     //Add here to add a class to each month.
     //console.log(i);
 
@@ -105,4 +114,11 @@ let addingEmptyDivAfter = function(){
 }
 addingEmptyDivAfter();
 
+// define where to take the title
+
+let month = ["January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+
+let dateMonthYear = month[n1] + " " + n2;
+
+document.getElementById("curentMonthplusYear").innerHTML = dateMonthYear;
 

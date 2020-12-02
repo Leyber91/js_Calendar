@@ -166,6 +166,20 @@ main {
         margin:0 auto;
     }
 }
+#buttonPlusCurrentMonth {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 0 3em;
+
+}
+
+#buttonPlusCurrentMonth > i {
+    font-size: 3em;
+    color:#45a29e;
+}
+
+
 
 
 

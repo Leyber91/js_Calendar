@@ -18,9 +18,9 @@
         <button id="addCalendarEvent" class='clickable'>+</button>
         <h1 class='title'>JS CALENDAR</h1>
         <div id="buttonPlusCurrentMonth">
-          <button></button>
-          <h2 id="curentMonthplusYear"></h2>
-          <button id= "buttonPlusCurrentMonth"></button>
+          <i id= "buttonMonthBefore" class="fas fa-angle-left"></i>
+          <h2 id="curentMonthplusYear">JANUARY 2020</h2>
+          <i id= "buttonMonthAfter" class="fas fa-angle-right"></i>
         </div>
       </section>
       <section id="monthDisplay">
@@ -44,6 +44,13 @@
     <script src="./JS/checkReminders.js"></script>
     <script src="./JS/addingEventsToCalendar.js"></script>
     <script src="./JS/changeMonths.js"></script>
+    <script>
+      //Adding buttons in the same html
+      let btnAfter = document.getElementById("buttonMonthAfter");
+      let btnBefore = document.getElementById("buttonMonthBefore");
+      btnAfter.addEventListener("click", addNextMonth);
+      btnBefore.addEventListener("click",addMonthBefore);
+    </script>
 
 </body>
 </html>
