@@ -76,6 +76,10 @@
     margin: 1.5em 0;
     background-color: #45a29e;
 }
+.modal__eventMessage{
+    max-width: 70%;
+    margin:0 auto;
+}
 
 .messageBackground{
     z-index: 2;
