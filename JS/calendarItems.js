@@ -26,10 +26,19 @@ for (let i=1; i <= monthDuration; i++ ){
     divNode.classList.add("divCalendarItem")
     let numberContainer=document.createElement("div");
     let eventContainer=document.createElement("div");
+    let addevent=document.createElement("button");
+    let number=document.createElement("div");
+    addevent.value =n2*10000+(n1+1)*100+i;
+    addevent.classList.add('addButton');
+    addevent.classList.add("clickable");
+    addevent.innerHTML='+';
     // An id must be added to each element
     eventContainer.id = "day"+ i;
-    numberContainer.innerHTML = i;
+    number.innerHTML = i;
+    numberContainer.appendChild(number);
+    numberContainer.appendChild(addevent);
     divNode.appendChild(numberContainer);
+    
     divNode.appendChild(eventContainer);
 
     //is today?

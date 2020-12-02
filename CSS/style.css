@@ -92,11 +92,36 @@ main {
     
 }
 .divCalendarItem>div:nth-child(1){
+    display: flex;
+    flex-direction:row;
+    align-content: space-between;
+    align-items: center;
+    height: 20%;;
+    width:100%;
     margin: 0.5em 0.5em;
     text-align: left;
     font-weight: 700;
     font-size: large;
     
+    
+}
+.divCalendarItem:hover>div:nth-child(1)>.addButton{
+    opacity:100%;
+}
+.addButton{
+    float:right;
+    align-self: flex-end;
+    height:110%;
+    float: right;
+    font-weight: 500;
+    font-size: large;
+    border-radius: 5px;
+    border:2px solid #c5c6c7;
+    background-color: #0b0c1000;
+    color:#c5c6c7;
+    margin-left:0.5em;
+    opacity:0%;
+    transition: opacity 0.5s ease-in-out ;
 }
 .divCalendarItem>div:nth-child(2)>button{
     width:90%;
@@ -113,6 +138,7 @@ main {
     font-family: 'Lato', sans-serif;
 
 }
+
 .divCalendarEvent {
     text-align: center;
     position: relative;

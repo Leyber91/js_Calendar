@@ -27,7 +27,6 @@ function createModal(event) {
 }
 
 function closeModal(event) {
-    console.log('suuu');
   if (
     event.target.classList.contains("modal") ||
     event.target.classList.contains("modal__closeIcon") ||
@@ -65,11 +64,12 @@ function createModalMain(event) {
   var modalMain = document.createElement("div");
   modalMain.classList.add("modal__main");
   modalMain.appendChild(closeIcon);
-  console.log(event);
-  if (event.target.id == "addCalendarEvent") {
+  console.log(event.target);
+  if (event.target.id == "addCalendarEvent" || event.target.classList.contains('addButton')) {
     isFormEvent=true;
     console.log(formContent);
     modalMain.innerHTML += formContent;
+    
     var buttonCancel = document.createElement("button");
     buttonCancel.setAttribute(
       "class",
@@ -96,6 +96,8 @@ function createModalMain(event) {
     buttonAdd.addEventListener("click", checkImputs);
     buttonCancel.addEventListener("click", closeModal);
 
+    
+
     //checkbox hiden/show
     setTimeout(function () {
       var formHasEndDate = document.getElementById("formHasEndDate");
@@ -106,6 +108,25 @@ function createModalMain(event) {
 
       formHasReminder.addEventListener("change", toggleVisibility);
 
+      if(event.target.classList.contains('addButton')){
+        let day=event.target.value%100;
+        let month=((event.target.value-day)%10000)/100;
+        let year=(event.target.value-month*100-day)/10000;
+        let text=year+'-';
+        if(month<10){
+          text+='0'+month+'-';
+        }else{
+          text+=month+'-';
+        } 
+        if(day<10){
+          text+='0'+day+'T12:00';
+        }else{
+          text+=day+'T12:00';
+        }
+        document.getElementById('formInitialDate').value=text;
+        
+      }
+
       function toggleVisibility(event) {
         object = document.getElementById(event.target.value);
         if (event.target.checked) {
@@ -114,7 +135,7 @@ function createModalMain(event) {
           object.classList.add("displayNone");
         }
       }
-    }, 500);
+    }, 100);
     console.log(modalMain)
   }else{
     isFormEvent=false;
@@ -235,6 +256,8 @@ function checkImputs(event) {
 
   function checkIfEvent(event){
     if(event.target.classList.contains('btnCalendarEvent')){
+      createModal(event);
+    }else if(event.target.classList.contains('addButton')){
       createModal(event);
     }
   }
