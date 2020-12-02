@@ -177,7 +177,18 @@ main {
 #buttonPlusCurrentMonth > i {
     font-size: 3em;
     color:#45a29e;
+    transition: all 0.5s ease;
 }
+
+/* The animation code */
+
+ 
+  
+  /* The element to apply the animation to */
+#buttonPlusCurrentMonth > i:hover{
+    color:#5bd8d2; 
+    font-size: 3.05em;
+  }
 
 
 
