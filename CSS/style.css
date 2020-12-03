@@ -53,11 +53,13 @@ main {
     align-items: space-between;
     text-align: center;
     align-content: center;
+    justify-content: center;
+    width: 100%;
     
 }
     .weekDayWords{
         flex-basis: 14%;
-        /*border: 0.2em solid #ffffff;*/
+        border: 0.1em solid rgba(black, 0);
         min-height: 2em;
         min-width: 3em;
         position: relative;
@@ -70,6 +72,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     margin:0 auto;
+    width: 100%;
+    justify-content: center;
 }
 
 .divCalendarItem {
