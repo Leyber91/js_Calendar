@@ -1,7 +1,13 @@
+:root {
+    --mainBackgroundColor : #0b0c10;
+    --mainFontColor: #c5c6c7;
+    --mainBorderHoverBlue: #45a29e;
+    --itemBackgroundDark: #1f2833;
+    --modalBackgroundDark:  #00000055;
+}
 .displayNone{
     display:none;
 }
-
 .modal{
     z-index: 1;
     position:absolute;
@@ -9,28 +15,26 @@
     left:0;
     width:100vw;
     height: 100vh;
-    background-color: #00000055;
+    background-color: var(--modalBackgroundDark);
 }
 .modal__main{
     margin:15vh auto ;
     width:70vw;
     max-height: 70vh;
-    background-color: #1f2833;
+    background-color: var(--itemBackgroundDark);
     text-align: center;
     padding: 0.5em;
     overflow-y: scroll;
     border-radius: 50px;
-    border: 1px solid #c5c6c7;
+    border: 1px solid var(--mainFontColor);
 }
-
 .modal__closeIcon{
     position: absolute;
     right: 17vw;
     top: 18vh;
-    color:#c5c6c7;
+    color: var(--mainFontColor);
     font-size: 1.5em;
 }
-
 .modal__main>form{
     
     width: 30em;
@@ -50,12 +54,14 @@
 .modal__main>form>input[type=checkbox]{
     min-width: 20px;
 
+    background-color: var(--mainFontColor);
+}
+.modal__main>form>*{
+    margin-bottom: 1em;
 }
 .modal__main>form>input[type=text],textarea{
     width:100%;
-
 }
-
 .modal__buttonsContainer{
     padding: 1.5em 0;
     display: flex;
@@ -65,7 +71,7 @@
 }
 .modal__button{
     width:30%;
-    color: #1f2833;
+    color: var(--itemBackgroundDark);
     font-size: large;
     font-weight: 700;
     border-radius:25px;
@@ -76,17 +82,16 @@
     background-color: #66fcf1;
 }
 .modal__button__cancel{
-    background-color: #45a29e;
+    background-color: var(--mainBorderHoverBlue);
 }
 .modal__button__delete{
     margin: 1.5em 0;
-    background-color: #45a29e;
+    background-color: var(--mainBorderHoverBlue);
 }
 .modal__eventMessage{
     max-width: 70%;
     margin:0 auto;
 }
-
 .messageBackground{
     z-index: 2;
     position:absolute;
@@ -94,7 +99,7 @@
     left:0;
     width:100vw;
     height: 100vh;
-    background-color: #00000055;
+    background-color: var(--modalBackgroundDark);
 }
 .message{
     margin:25vh auto ;
@@ -106,42 +111,32 @@
     font-size: x-large;
     padding: 1em;
     border-radius: 25px;
-    border: 1px solid #c5c6c7;
-    background-color: #1f2833;
+    border: 1px solid var(--mainFontColor);
+    background-color: var(--itemBackgroundDark);
 }
-
 .message__button{
     width:30%;
-    color: #1f2833;
-    background-color: #45a29e;
+    color: var(--itemBackgroundDark);
+    background-color: var(--mainBorderHoverBlue);
     font-size: large;
     font-weight: 700;
     border-radius:25px;
     border:none;
     padding: 0.3em;
     margin-top: 2em;
-    
 }
-
-
-
-
-
 ::-webkit-scrollbar {
     display:none;
     width: 5px;
   }
-  
   /* Track */
   ::-webkit-scrollbar-track {
     background: #f1f1f1; 
   }
-   
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #888; 
   }
-  
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 

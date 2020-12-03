@@ -1,8 +1,17 @@
+/*COLOR PALETTE*/
+
+:root {
+    --mainBackgroundColor : #0b0c10;
+    --mainFontColor: #c5c6c7;
+    --mainBorderHoverBlue: #45a29e;
+    --itemBackgroundDark: #1f2833;
+}
+
 
 /* BEGINNING FLEX STRUCTURE */
 body{
-    background-color: #0b0c10;
-    color: #c5c6c7
+    background-color: var(--mainBackgroundColor);
+    color: var(--mainFontColor);
 }
 main {
     display: flex;
@@ -40,14 +49,14 @@ main {
 }
 #addCalendarEvent:focus{
     outline: none;
-    background-color: #45a29e;
-    border: 1px solid white;
+    background-color: var(--mainBorderHoverBlue);
+    border: 1px solid var(--mainFontColor);
 }
 
 #addCalendarEvent:hover{
     outline: none;
     background-color: #9cfff8;
-    border: 1px solid white;
+    border: 1px solid var(--mainFontColor);
     transform: scale(1.03);
     
 }
@@ -65,8 +74,7 @@ main {
     align-content: center;
     justify-content: center;
     width: 100%;
-    
-}
+    }
     .weekDayWords{
         flex-basis: 14%;
         border: 0.1em solid rgba(black, 0);
@@ -75,7 +83,7 @@ main {
         position: relative;
         font-weight: 700;
         font-size: large;
-    }
+        }
 
 #mainCalendarFlexBox {
     flex-basis: 85%;
@@ -84,27 +92,24 @@ main {
     margin:0 auto;
     width: 100%;
     justify-content: center;
-}
+    }
 
 .divCalendarItem {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     flex-basis: 14%;
-    border: 0.1em solid #45a29e;
+    border: 0.1em solid var(--mainBorderHoverBlue);
     min-height: 7em;
     min-width: 3em;
     transition: all 0.5s ease;
-    
-}
+    }
 .divCalendarItem:hover {
-    background-color: #1f2833;
-
-
-}
+    background-color: var(--itemBackgroundDark);
+    }
 
 .today{
-    background-color: #45a29e;
+    background-color: var(--mainBorderHoverBlue);
 }
 .divCalendarItem>div:nth-child(2){
     width:100%;;
@@ -123,8 +128,6 @@ main {
     text-align: left;
     font-weight: 700;
     font-size: large;
-    
-    
 }
 .divCalendarItem:hover>div:nth-child(1)>.addButton{
     opacity:100%;
@@ -140,17 +143,17 @@ main {
     font-weight: 500;
     font-size: large;
     border-radius: 5px;
-    border:2px solid #c5c6c7;
-    background-color: #0b0c1000;
-    color:#c5c6c7;
+    border:2px solid var(--mainFontColor);
+    background-color: #00000000;
+    color:var(--mainFontColor);
     margin-left:0.5em;
     opacity:0%;
     transition: opacity 0.5s ease-in-out ;
 }
 .divCalendarItem>div:nth-child(2)>button{
     width:90%;
-    background-color: #1f2833;
-    color: #c5c6c7;
+    background-color: var(--itemBackgroundDark);
+    color: var(--mainFontColor);
     padding: 0.2em 0.5em;
     margin:0.3em auto;
     text-overflow: ellipsis;
@@ -165,12 +168,12 @@ main {
 }
 
 .divCalendarItem:hover>div:nth-child(2)>button{
-    background-color: #45a29e;
-    color: #1f2833;
+    background-color: var(--mainBorderHoverBlue);
+    color: var(--itemBackgroundDark);
 }
 
 .divCalendarItem>div:nth-child(2)>button:hover{
-    border: 1px solid #c5c6c7;
+    border: 1px solid var(--mainFontColor);
 }
 .divCalendarItem>div:nth-child(2)>button:focus{
     border: 1px solid #c5c6c7;
@@ -179,13 +182,13 @@ main {
 .divCalendarEvent {
     text-align: center;
     position: relative;
-    background-color: black;
-    color:white;
+    background-color: var(--mainBackgroundColor);
+    color:var(--mainFontColor);
     border-radius: 0.2em;
 }
 
 .divCalendarEmptyItem{
-    background-color: #1f2833;
+    background-color: var(--itemBackgroundDark);
 }
 
 .clickable{
@@ -212,7 +215,7 @@ main {
 
 #buttonPlusCurrentMonth > button {
     font-size: 3em;
-    color:#45a29e;
+    color:var(--mainBorderHoverBlue);
     transition: all 0.5s ease;
     background-color: #1f283300;
     border:none;
