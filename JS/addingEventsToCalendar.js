@@ -19,6 +19,9 @@ function eventToDisplay (item){
                 let btnNode = document.createElement("button"); // create a button
                 btnNode.classList.add("btnCalendarEvent");
                 btnNode.classList.add("clickable"); // add the class to the button
+                if(x.reminder && new Date(x.initialDate)<new Date()){
+                    btnNode.setAttribute('style', 'background-color: var(--mainBackgroundColor);color: var(--mainFontColor);border: 1px solid var(--mainFontColor);')
+                }
                 btnNode.innerHTML = eventTitle; //  add the text inside the button
                 btnNode.id = eventTitle;
                 // day * 100 + array position
