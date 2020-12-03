@@ -96,8 +96,6 @@ function createNewEvent(
 }
 
 function setEvent(eventObject, day) {
-  console.log("1");
-  console.log(day);
   calendar[day.getFullYear()][day.getMonth()][day.getDate() - 1].push(
     eventObject
   );
@@ -109,8 +107,6 @@ function setEvent(eventObject, day) {
 }
 
 function deleteEvent(element, day) {
-  console.log(element);
-  console.log(day);
   const d = calendar[day.getFullYear()][day.getMonth()][day.getDate() - 1];
   const index = d.indexOf(element);
   d.splice(index, 1);
@@ -125,7 +121,6 @@ function deleteEventFromCalendar(element) {
   if (element.endDate) {
     
     let isSameDay = areSameDate(new Date(element.initialDate), new Date(element.endDate));
-    console.log(isSameDay)
     if (isSameDay) {
       deleteEvent(element, new Date(element.initialDate));
     } else {
@@ -141,7 +136,6 @@ function deleteEventFromCalendar(element) {
   }
   saveCalendar();
   saveReminders();
-  console.log(calendar);
   displayCalendar();
 }
 
@@ -192,7 +186,6 @@ function addReminder(element) {
 }
 
 function deleteReminder(reminder) {
-  console.log(reminder);
   const index = reminders.indexOf(reminder);
   reminders.splice(index, 1);
   saveReminders();
