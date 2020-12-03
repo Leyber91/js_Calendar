@@ -247,6 +247,9 @@ function checkImputs(event) {
   } else if (initialDate - new Date() < 0 && reminder) {
     showMessage("You can't put a reminder to an event that has expired.");
     check++;
+  }else if (description.length>500) {
+    showMessage("Description is too long");
+    check++;
   } else {
     createNewEvent(title, initialDate, finalDate, reminder, description, type);
     canCloseModal = true;
