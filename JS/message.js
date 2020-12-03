@@ -26,7 +26,6 @@ function closeMessage(event){
     if(event.target.id=='messageBackground' || event.target.id=='messageButton'){
         document.getElementById('messageBackground').removeEventListener('click', closeMessage);
         document.getElementById('messageButton').removeEventListener('click', closeMessage);
-
         messageContainer.innerHTML='';
     }
 }

@@ -17,7 +17,6 @@ function checkCheckReminder(){
                     deleteReminder(reminders[0]);
                     checkCheckReminder();
                 } else if (y < 0) {
-                    
                     let messageTotal='<h2>You missed this events:</h2>';
                     do{
                         let time = timeRemainingToEvent * -1;
@@ -30,10 +29,8 @@ function checkCheckReminder(){
                             timeRemainingToEvent = (startEventDateMS - actualTimeMS)/(1000*60);
                             timeRemainingToReminder = timeRemainingToEvent - reminders[0].reminder; 
                         }
-                        
                     }while(reminders[0]&&timeRemainingToEvent<0 && timeRemainingToReminder<0)
                     showMessage(messageTotal);
-                    
                 }
             }
                 //alert(reminders[0].reminder + " minutes before " + reminders[0].title +"\n\n" + 'You actually have ' + timeRemainingToEvent + ' minutes left' +"\n\n" + 'You will be reminded for this event in ' + timeRemainingToReminder+' minutes');
