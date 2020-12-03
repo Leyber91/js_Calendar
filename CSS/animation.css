@@ -1,0 +1,22 @@
+@keyframes animation {
+    0%   {opacity:100%; left:0vw; top:0vh;}
+    50%  {opacity:0%; left:-100vw; top:0vh;}
+    51%  {opacity:0%; left:200vw; top:0vh;}
+    100% {opacity:100%; left:0vw; top:0vh;}
+  }
+
+  
+  /* The element to apply the animation to */
+  .animate {
+    position: relative;
+    animation-name: animation;
+    animation-duration: 1s;
+    animation-direction: normal;
+  }
+
+  .animateReverse {
+    position: relative;
+    animation-name: animation;
+    animation-duration: 1s;
+    animation-direction: reverse;
+  }
