@@ -36,12 +36,22 @@ main {
     border-radius: 50%;
     border:none;
     background-color: #66fcf1;
+    transition: all 0.5s ease;
 }
 #addCalendarEvent:focus{
     outline: none;
     background-color: #45a29e;
     border: 1px solid white;
 }
+
+#addCalendarEvent:hover{
+    outline: none;
+    background-color: #9cfff8;
+    border: 1px solid white;
+    transform: scale(1.03);
+    
+}
+
 #currentDay {
     flex-basis: 5%;
     text-align: center;
@@ -84,8 +94,15 @@ main {
     border: 0.1em solid #45a29e;
     min-height: 7em;
     min-width: 3em;
+    transition: all 0.5s ease;
     
 }
+.divCalendarItem:hover {
+    background-color: #1f2833;
+
+
+}
+
 .today{
     background-color: #45a29e;
 }
@@ -142,6 +159,15 @@ main {
     font-family: 'Lato', sans-serif;
     white-space: nowrap;
 
+}
+
+.divCalendarItem:hover>div:nth-child(2)>button{
+    background-color: #45a29e;
+    color: #1f2833;
+}
+
+.divCalendarItem>div:nth-child(2)>button:hover{
+    border: 1px solid #c5c6c7;
 }
 
 .divCalendarEvent {
