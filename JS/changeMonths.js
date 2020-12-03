@@ -12,15 +12,12 @@ let addNextMonth = function() {
 
         let currentMonth = d.getMonth();
         let currentYear = d.getFullYear();
-        console.log(currentMonth + " " + currentYear);
         currentMonth++ ;
-        console.log(currentMonth + " " + currentYear);
         
         if (currentMonth === 12 & currentYear < 2021){
             
             currentMonth = 0;
             currentYear++;
-            console.log(currentMonth + " " + currentYear);
             }
 
         else if(currentMonth === 12 & currentYear === 2021) { // This condition is placed in order to stopCurrent
@@ -28,7 +25,6 @@ let addNextMonth = function() {
             showMessage("Cannot go to 2022");
             currentMonth = 11;
             currentYear = 2021;
-            console.log(currentMonth + " " + currentYear);
         };
         
         
@@ -36,8 +32,6 @@ let addNextMonth = function() {
         d.setFullYear(currentYear);
         n1 = currentMonth;
         n2 = currentYear;
-        console.log(currentMonth + " " + currentYear);
-        console.log(!mainCalendar.classList.contains('animate'))
         if(canChange && !mainCalendar.classList.contains('animate') && !mainCalendar.classList.contains('animateReverse')){
             mainCalendar.className='animate';
             setTimeout(() => {
@@ -69,15 +63,11 @@ let addMonthBefore = function() {
 
     let currentMonth = d.getMonth();
     let currentYear = d.getFullYear();
-    console.log(currentMonth + " " + currentYear);
     currentMonth-- ;
-    console.log(currentMonth + " " + currentYear);
     
     if (currentMonth === -1 && currentYear > 2020){
         currentMonth = 11;
         currentYear--;
-
-        console.log(currentMonth + " " + currentYear);
         }
 
     else if (currentMonth === -1 && currentYear === 2020){ // This condition is placed in order to stopCurrent
@@ -85,7 +75,6 @@ let addMonthBefore = function() {
         showMessage("Cannot go before 2020");
         currentMonth = 0;
         currentYear = 2020;
-        console.log(currentMonth + " " + currentYear);
     }
     
     d.setMonth(currentMonth);
