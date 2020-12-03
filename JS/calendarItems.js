@@ -100,10 +100,13 @@ let parentCalendarChildren = document.getElementById("mainCalendarFlexBox").chil
 //console.log(parentCalendarChildren) // we use this one to get the number of elements
 let addingEmptyDivAfter = function(){
     let numOfDivToAdd = 7 - (parentCalendarChildren%7);
+    if(parentCalendarChildren%7==0){
+        numOfDivToAdd=0;
+    }
     //console.log(numOfDivToAdd);
     let z = numOfDivToAdd;
 
-    while (z > 0) {
+    while (z >0) {
         let divNode = document.createElement("div"); // create de DIV
         divNode.classList.add("divCalendarItem")
         divNode.classList.add("divCalendarEmptyItem")
